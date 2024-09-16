@@ -1,0 +1,45 @@
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>MEV Stats</title>
+       <script src="https://telegram.org/js/telegram-web-app.js"></script>
+       <style>
+           body {
+               font-family: Arial, sans-serif;
+               padding: 20px;
+               background-color: var(--tg-theme-bg-color, #ffffff);
+               color: var(--tg-theme-text-color, #000000);
+           }
+           .stats {
+               margin-top: 20px;
+           }
+       </style>
+   </head>
+   <body>
+       <h1>MEV Stats</h1>
+       <div class="stats" id="stats"></div>
+       <script>
+           function generateRandomStats() {
+               return {
+                   totalMEV: (Math.random() * 100).toFixed(2) + ' SOL',
+                   avgMEV: (Math.random() * 10).toFixed(2) + ' SOL',
+                   maxMEV: (Math.random() * 20).toFixed(2) + ' SOL'
+               };
+           }
+
+           function displayStats() {
+               const stats = generateRandomStats();
+               document.getElementById('stats').innerHTML = `
+                   <p><strong>Total MEV:</strong> ${stats.totalMEV}</p>
+                   <p><strong>Average MEV:</strong> ${stats.avgMEV}</p>
+                   <p><strong>Max MEV:</strong> ${stats.maxMEV}</p>
+               `;
+           }
+
+           Telegram.WebApp.ready();
+           displayStats();
+       </script>
+   </body>
+   </html>
